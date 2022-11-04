@@ -5,8 +5,19 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { Dimensions, Source } from "./components/e-line-chart/e-line-chart";
+import { TitleComponentOption } from "echarts/components";
 export namespace Components {
     interface ELineChart {
+        "backgroundColor"?: string;
+        "chartTitle"?: string | TitleComponentOption;
+        "dimensions": Dimensions;
+        "height"?: string | number;
+        "source": Source;
+        "width"?: string | number;
+        "yName"?: string;
+        "yNameColor"?: string;
+        "yNameLocation"?: 'start' | 'middle' | 'end';
     }
 }
 declare global {
@@ -22,6 +33,15 @@ declare global {
 }
 declare namespace LocalJSX {
     interface ELineChart {
+        "backgroundColor"?: string;
+        "chartTitle"?: string | TitleComponentOption;
+        "dimensions"?: Dimensions;
+        "height"?: string | number;
+        "source"?: Source;
+        "width"?: string | number;
+        "yName"?: string;
+        "yNameColor"?: string;
+        "yNameLocation"?: 'start' | 'middle' | 'end';
     }
     interface IntrinsicElements {
         "e-line-chart": ELineChart;
