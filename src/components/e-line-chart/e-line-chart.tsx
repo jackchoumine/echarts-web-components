@@ -19,6 +19,9 @@ import {
 import { LineChart, LineSeriesOption } from 'echarts/charts'
 import { UniversalTransition } from 'echarts/features'
 import { CanvasRenderer } from 'echarts/renderers'
+
+import { erd } from '../../utils/utils'
+
 // import type { DatasetOption } from 'echarts/types/dist/shared'
 
 echarts.use([
@@ -135,7 +138,7 @@ export class ELineChart {
   @Prop() dimensions: Dimensions
   @Prop() source: Source
   @Prop() height?: string | number = '700px'
-  @Prop() width?: string | number = '700px'
+  @Prop() width?: string | number = '100%'
   @Prop() backgroundColor?: string = '#fdfdfd'
   @Prop() chartTitle?: string | TitleComponentOption = ''
   @Prop() yName?: string = ''
@@ -151,7 +154,10 @@ export class ELineChart {
   dimensionsChange(newDimensions: Dimensions) {
     this.dimensions = newDimensions
   }
-
+  windowResize() {
+    console.log('resize')
+    this.myChart?.resize()
+  }
   componentWillRender() {
     this.option = defaultOptions
     // @ts-ignore
@@ -203,6 +209,18 @@ export class ELineChart {
   componentDidLoad() {
     this.myChart = echarts.init(this.div)
     this.myChart.setOption(this.option)
+
+    erd.listenTo(this.div, el => {
+      // console.log(el.offsetHeight)
+      // console.log(el.offsetWidth)
+      this.innerWidth = el.offsetWidth
+      this.innerHeight = el.offsetHeight
+      this.myChart.resize()
+    })
+    // window.addEventListener('resize', this.windowResize)
+  }
+  disconnectedCallback() {
+    // removeEventListener('resize', this.windowResize)
   }
   render() {
     return (

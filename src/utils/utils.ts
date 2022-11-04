@@ -1,3 +1,3 @@
-export function format(first: string, middle: string, last: string): string {
-  return (first || '') + (middle ? ` ${middle}` : '') + (last ? ` ${last}` : '');
-}
+import elementResizeDetectorMaker from 'element-resize-detector'
+
+export const erd = elementResizeDetectorMaker({ strategy: 'scroll' })

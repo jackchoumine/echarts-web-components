@@ -12,7 +12,9 @@
 | `backgroundColor` | `background-color` |             | `string`                               | `'#fdfdfd'` |
 | `chartTitle`      | `chart-title`      |             | `TitleOption \| string`                | `''`        |
 | `dimensions`      | --                 |             | `string[]`                             | `undefined` |
+| `height`          | `height`           |             | `number \| string`                     | `'700px'`   |
 | `source`          | --                 |             | `{ [x: string]: string \| number; }[]` | `undefined` |
+| `width`           | `width`            |             | `number \| string`                     | `'700px'`   |
 | `yName`           | `y-name`           |             | `string`                               | `''`        |
 | `yNameColor`      | `y-name-color`     |             | `string`                               | `'#000'`    |
 | `yNameLocation`   | `y-name-location`  |             | `"end" \| "middle" \| "start"`         | `'end'`     |
