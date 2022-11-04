@@ -147,16 +147,33 @@ export class ELineChart {
 
   @Watch('source')
   sourceChange(newSource: Source) {
-    this.source = newSource
+    // @ts-ignore
+    this.option.dataset.source = newSource
+    this.resetRenderChart()
   }
 
   @Watch('dimensions')
   dimensionsChange(newDimensions: Dimensions) {
-    this.dimensions = newDimensions
+    // @ts-ignore
+    this.option.dataset.dimensions = newDimensions
+    this.resetRenderChart()
   }
+
+  @Watch('chartTitle')
+  chartTitleChange(title: string) {
+    // @ts-ignore
+    this.option.title.text = title
+    this.resetRenderChart()
+  }
+
   windowResize() {
     console.log('resize')
     this.myChart?.resize()
+  }
+  resetRenderChart() {
+    // this.myChart.dispose()
+    this.myChart.clear()
+    this.myChart.setOption(this.option)
   }
   componentWillRender() {
     this.option = defaultOptions
