@@ -1,6 +1,6 @@
 {
   "name": "echarts-web-components",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "echarts build into web components,work in any framework and any anywhere.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
