@@ -14,7 +14,7 @@
 | `dimensions`      | --                 |             | `string[]`                             | `undefined` |
 | `height`          | `height`           |             | `number \| string`                     | `'700px'`   |
 | `source`          | --                 |             | `{ [x: string]: string \| number; }[]` | `undefined` |
-| `width`           | `width`            |             | `number \| string`                     | `'700px'`   |
+| `width`           | `width`            |             | `number \| string`                     | `'100%'`    |
 | `yName`           | `y-name`           |             | `string`                               | `''`        |
 | `yNameColor`      | `y-name-color`     |             | `string`                               | `'#000'`    |
 | `yNameLocation`   | `y-name-location`  |             | `"end" \| "middle" \| "start"`         | `'end'`     |
