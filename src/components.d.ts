@@ -7,6 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { Dimensions, Source } from "./components/e-line-chart/e-line-chart";
 import { TitleComponentOption } from "echarts/components";
+import { Person } from "./components/hello-stencil/hello-stencil";
 export namespace Components {
     interface ELineChart {
         "backgroundColor"?: string;
@@ -19,6 +20,17 @@ export namespace Components {
         "yNameColor"?: string;
         "yNameLocation"?: 'start' | 'middle' | 'end';
     }
+    interface HelloStencil {
+        "array": Person[];
+        "attrArray": Person[];
+        "attrPerson": Person;
+        "name": string;
+        "person": Person;
+    }
+}
+export interface HelloStencilCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLHelloStencilElement;
 }
 declare global {
     interface HTMLELineChartElement extends Components.ELineChart, HTMLStencilElement {
@@ -27,8 +39,15 @@ declare global {
         prototype: HTMLELineChartElement;
         new (): HTMLELineChartElement;
     };
+    interface HTMLHelloStencilElement extends Components.HelloStencil, HTMLStencilElement {
+    }
+    var HTMLHelloStencilElement: {
+        prototype: HTMLHelloStencilElement;
+        new (): HTMLHelloStencilElement;
+    };
     interface HTMLElementTagNameMap {
         "e-line-chart": HTMLELineChartElement;
+        "hello-stencil": HTMLHelloStencilElement;
     }
 }
 declare namespace LocalJSX {
@@ -43,8 +62,19 @@ declare namespace LocalJSX {
         "yNameColor"?: string;
         "yNameLocation"?: 'start' | 'middle' | 'end';
     }
+    interface HelloStencil {
+        "array"?: Person[];
+        "attrArray"?: Person[];
+        "attrPerson"?: Person;
+        "name"?: string;
+        "onMy-click"?: (event: HelloStencilCustomEvent<Person>) => void;
+        "onMyClick"?: (event: HelloStencilCustomEvent<Person>) => void;
+        "onMyclick"?: (event: HelloStencilCustomEvent<Person>) => void;
+        "person"?: Person;
+    }
     interface IntrinsicElements {
         "e-line-chart": ELineChart;
+        "hello-stencil": HelloStencil;
     }
 }
 export { LocalJSX as JSX };
@@ -52,6 +82,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "e-line-chart": LocalJSX.ELineChart & JSXBase.HTMLAttributes<HTMLELineChartElement>;
+            "hello-stencil": LocalJSX.HelloStencil & JSXBase.HTMLAttributes<HTMLHelloStencilElement>;
         }
     }
 }

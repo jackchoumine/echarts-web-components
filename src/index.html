@@ -11,22 +11,56 @@
 </head>
 
 <body>
-  <e-line-chart></e-line-chart>
+  <!-- <e-line-chart></e-line-chart> -->
+  <hello-stencil name="测试stencil 的事件和复杂数据"></hello-stencil>
   <script>
-    const eLintChart = document.querySelector('e-line-chart');
-    eLintChart.dimensions = ['product', '2015', '2016', '2017']
-    eLintChart.source = [
-      { product: 'Matcha Latte', 2015: 43.3, 2016: 85.8, 2017: 93.7 },
-      { product: 'Milk Tea', 2015: 83.1, 2016: 73.4, 2017: 55.1 },
-      { product: 'Cheese Cocoa', 2015: 86.4, 2016: 65.2, 2017: 82.5 },
-      { product: 'Walnut Brownie', 2015: 72.4, 2016: 53.9, 2017: 39.1 },
-    ]
-    eLintChart.chartTitle = 'lineChart'
-    eLintChart.yName = 'lineChart'
-    setTimeout(function () {
-      eLintChart.chartTitle = 'hello'
-      eLintChart.dimensions = ['product', '2015', '2016']
+    // const eLintChart = document.querySelector('e-line-chart');
+    // eLintChart.dimensions = ['product', '2015', '2016', '2017']
+    // eLintChart.source = [
+    //   { product: 'Matcha Latte', 2015: 43.3, 2016: 85.8, 2017: 93.7 },
+    //   { product: 'Milk Tea', 2015: 83.1, 2016: 73.4, 2017: 55.1 },
+    //   { product: 'Cheese Cocoa', 2015: 86.4, 2016: 65.2, 2017: 82.5 },
+    //   { product: 'Walnut Brownie', 2015: 72.4, 2016: 53.9, 2017: 39.1 },
+    // ]
+    // eLintChart.chartTitle = 'lineChart'
+    // eLintChart.yName = 'lineChart'
+    // setTimeout(function () {
+    //   eLintChart.chartTitle = 'hello'
+    //   eLintChart.dimensions = ['product', '2015', '2016']
+    // }, 2000)
+    //************************************************************************************************
+    const helloStencil = document.querySelector('hello-stencil')
+    console.log(helloStencil)
+    const array = [{ name: 'hello', age: '20' }]
+    helloStencil.attrArray = array
+    // NOTE 这里不生效
+    helloStencil.array = array
+    helloStencil.attrPerson = array[0]
+    helloStencil.person = array[0]
+    setTimeout(() => {
+      // helloStencil.setAttribute('attrArray', array)
+      // NOTE 在 Watch 赋值，才生效
+      helloStencil.attrArray = [{ name: 'attrArray', age: '20' }]
+      // NOTE 不生效
+      // helloStencil.setAttribute('array', array)
+      helloStencil.array = [{ name: 'world', age: '20' }]
+      helloStencil.person = { name: 'hello-stencil' }
+      helloStencil.attrPerson = { name: 'change' }
     }, 2000)
+    // NOTE 复杂数据的传递：设置可变，使用 . 设置
+
+    helloStencil.addEventListener('myClick', (event) => {
+      console.log('myClick')
+      console.log(event)
+    })
+    helloStencil.addEventListener('my-click', (event) => {
+      console.log('my-click')
+      console.log(event)
+    })
+    helloStencil.addEventListener('myclick', (event) => {
+      console.log('myclick')
+      console.log(event)
+    })
   </script>
 </body>
 
